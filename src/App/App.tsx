@@ -1,8 +1,8 @@
 import { useReducer } from "react";
-import Canvas from "./components/Canvas";
-import Controls from "./components/Controls";
-import Stats from "./components/Stats";
-import type { DrawingState, DrawingAction, Point } from "./types";
+import Canvas from "../components/canvas/Canvas";
+import Controls from "../components/controls/Controls";
+import Stats from "../components/stats/Stats";
+import type { DrawingState, DrawingAction, Point } from "../types";
 import "./App.css";
 
 const ADD_POINT = "ADD_POINT";

@@ -1,4 +1,4 @@
-import type { ControlsProps } from "../types";
+import type { ControlsProps } from "../../types";
 
 function Controls({
   onAddPoint,

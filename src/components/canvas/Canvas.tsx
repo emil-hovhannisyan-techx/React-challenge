@@ -1,5 +1,5 @@
-import type { CanvasProps } from "../types";
-import Point from "./Point";
+import type { CanvasProps } from "../../types";
+import Point from "../point/Point";
 
 function Canvas({ points, onAddPoint }: CanvasProps) {
   const handleCanvasClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -11,7 +11,7 @@ function Canvas({ points, onAddPoint }: CanvasProps) {
   };
 
   return (
-    <div className="canvas" onClick={handleCanvasClick}>
+    <div className="canvas" data-testid="canvas" onClick={handleCanvasClick}>
       {points.length === 0 && <div>Click anywhere to add a point</div>}
       {points.map((point) => (
         <Point key={point.id} point={point} />

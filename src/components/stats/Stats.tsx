@@ -1,4 +1,4 @@
-import type { StatsProps } from "../types";
+import type { StatsProps } from "../../types";
 
 function Stats({ pointsCount, historyCount, futureCount }: StatsProps) {
   return (
