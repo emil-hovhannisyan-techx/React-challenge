@@ -1,20 +1,24 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import type { DrawingState, DrawingAction } from "../types";
 import App from "./App";
 
 const ADD_POINT = "ADD_POINT";
 const UNDO = "UNDO";
 const REDO = "REDO";
 
-function drawingReducer(state: any, action: any) {
+function drawingReducer(state: DrawingState, action: DrawingAction) {
   switch (action.type) {
     case ADD_POINT: {
-      const currentPoints = state.history[state.history.length - 1];
-      const newPoints = [...currentPoints, action.point];
-      return {
-        history: [...state.history, newPoints],
-        future: [],
-      };
+      if ("point" in action) {
+        const currentPoints = state.history[state.history.length - 1];
+        const newPoints = [...currentPoints, action.point];
+        return {
+          history: [...state.history, newPoints],
+          future: [],
+        };
+      }
+      return state; // Fallback if point doesn't exist
     }
     case UNDO: {
       if (state.history.length <= 1) return state;
@@ -250,15 +254,23 @@ describe("App Integration", () => {
       future: [],
     };
 
-    const result = drawingReducer(initialState, { type: "UNKNOWN_ACTION" });
+    const action = {
+      type: "ADD_POINT",
+      point: { x: 0, y: 0, id: 0, color: "#000" },
+    } as DrawingAction;
+    const unknownAction = {
+      ...action,
+      type: "UNKNOWN_ACTION",
+    } as unknown as DrawingAction;
 
+    const result = drawingReducer(initialState, unknownAction);
     expect(result).toBe(initialState);
   });
 
   it("covers all branches in ADD_POINT action", () => {
     const initialState = {
       history: [[{ x: 10, y: 10, id: 1, color: "#red" }]],
-      future: [{ x: 20, y: 20, id: 2, color: "#blue" }],
+      future: [[{ x: 20, y: 20, id: 2, color: "#blue" }]],
     };
 
     const newPoint = { x: 30, y: 30, id: 3, color: "#green" };

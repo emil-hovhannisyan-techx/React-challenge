@@ -13,7 +13,8 @@ export interface DrawingState {
 export type DrawingAction =
   | { type: "ADD_POINT"; point: Point }
   | { type: "UNDO" }
-  | { type: "REDO" };
+  | { type: "REDO" }
+  | { type: string };
 
 export interface ControlsProps {
   onAddPoint: () => void;
