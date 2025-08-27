@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  overflow: hidden;
+  padding: 25px;
+  width: 100%;
+}
+
+.app h1 {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.app > p {
+  color: #7f8c8d;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 25px;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(2px);
+}
+
+.add-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.add-btn:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.undo-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.undo-btn:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.redo-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.redo-btn:hover:not(:disabled) {
+  background-color: #27ae60;
+}
+
+.undo-redo-container {
+  display: flex;
+  gap: 15px;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.canvas {
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 2px dashed #95a5a6;
+  border-radius: 8px;
+  color: #7f8c8d;
+  display: flex;
+  font-style: italic;
+  height: 400px;
+  justify-content: center;
+  margin-bottom: 25px;
+  overflow: hidden;
+  position: relative;
+}
+
+.canvas:hover {
+  border-color: #3498db;
+  cursor: pointer;
+}
+
+.point {
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  height: 24px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+  width: 24px;
+}
+
+.point:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  z-index: 10;
+}
+
+.stats {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 500;
+  gap: 15px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.stat-item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.instructions {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.instructions h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.instructions ul {
+  padding-left: 20px;
+}
+
+.instructions li {
+  color: #7f8c8d;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.instructions li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 15px;
+  }
+
+  .controls {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .undo-redo-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .undo-redo-container button {
+    flex: 1;
+    max-width: 120px;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

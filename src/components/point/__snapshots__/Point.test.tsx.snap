@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Point > matches snapshot with basic point data 1`] = `
+<div
+  class="point"
+  data-testid="point-1"
+  style="left: 100px; top: 200px; background-color: rgb(255, 87, 51);"
+/>
+`;
+
+exports[`Point > matches snapshot with complex point data 1`] = `
+<div
+  class="point"
+  data-testid="point-6"
+  style="left: 500px; top: 600px; background-color: rgb(255, 128, 64);"
+/>
+`;
+
+exports[`Point > matches snapshot with negative coordinates 1`] = `
+<div
+  class="point"
+  data-testid="point-8"
+  style="left: -50px; top: -100px; background-color: rgb(0, 0, 0);"
+/>
+`;
